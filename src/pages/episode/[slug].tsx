@@ -55,7 +55,7 @@ function EpisodePage() {
         <p>{currentEpisode?.air_date}</p>
       </div>
       <div>
-        <p className="text-center bg-secondary text-white font-bold text-xl p-4">Characters</p>
+        <p className="text-center bg-secondary text-white underline underline-offset-4 font-bold text-xl p-4">{currentEpisode?.characters.length} Characters</p>
         <CardContainer cards={currentCharacters} />
       </div>
     </RootLayout>

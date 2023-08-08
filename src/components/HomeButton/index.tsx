@@ -9,9 +9,9 @@ export default function HomeButton() {
   return (
     <div
       onClick={onClickHome}
-      className="bg-primary border-b-2 border-green-600 text-green-600 text-3xl"
+      className="bg-primary font-bold text-white text-3xl"
     >
-      Home
+      <div className="ml-4">Home</div>
     </div>
   );
 }

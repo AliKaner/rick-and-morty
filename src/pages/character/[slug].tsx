@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 function CharacterPage() {
   const [currentCharacter, setCurrentCharacter] = useState<
-    CharacterType | undefined
+    CharacterType
   >();
   const router = useRouter();
   const { slug } = router.query;
@@ -38,29 +38,30 @@ function CharacterPage() {
   };
 
   const onLocationClickHandle = () => {
-    currentCharacter
-      ? router.push(
-          `/location/${extractIdFromUrl(currentCharacter.location.url)}`
-        )
-      : null;
-  };
-
+    if (currentCharacter && currentCharacter.location?.name !== "unknown") {
+      router.push(`/location/${extractIdFromUrl(currentCharacter.location.url)}`);
+    }
+  }
+  
   const onEpisodeClickHandle = () => {
-    currentCharacter
-      ? router.push(`/episode/${extractIdFromUrl(currentCharacter.origin.url)}`)
-      : null;
-  };
+    if (currentCharacter && currentCharacter.origin?.name !== "unknown") {
+      router.push(`/episode/${extractIdFromUrl(currentCharacter.origin.url)}`);
+    }
+  }
+  
+  
 
   return (
     <RootLayout>
       <HomeButton />
-      <div className="flex flex-col items-center justify-center bg-secondary h-screen text-white">
+      <div className="flex flex-col items-center gap-4 justify-center bg-secondary h-screen text-white">
+        <div className="font-extrabold text-5xl">{currentCharacter?.name}</div>
         <img
           src={currentCharacter?.image}
           alt={currentCharacter?.name}
           className="w-64 h-64 rounded-full"
         />
-        <div className="font-extrabold text-5xl">{currentCharacter?.name}</div>
+
         <div className="flex flex-row items-center ">
           <div
             className={`rounded-full w-2 h-2 mr-2 ${getStatusStyle(

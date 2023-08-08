@@ -57,7 +57,7 @@ function LocationPage() {
             <p>{currentLocation.dimension ?? "Dimension"} {currentLocation.type ?? "Location Type"}</p>
           </div>
           <div>
-            <p className="text-center font-bold">Characters</p>
+            <p className="text-center underline underline-offset-4 font-bold">{currentLocation.residents.length} Characters</p>
             <CardContainer cards={currentCharacters}/>
           </div>
         </div>
