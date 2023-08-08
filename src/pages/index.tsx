@@ -11,7 +11,7 @@ function HomePage() {
   const [currentCards, setCurrentCards] = useState<CharacterType[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(10);
-  
+
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
@@ -34,7 +34,7 @@ function HomePage() {
     <RootLayout>
       <Title title={TITLE} />
       <div className="w-screen h-screen items-center">
-        <CardContainer cards={currentCards}/>
+        <CardContainer cards={currentCards} />
         <Pagination
           onPageChange={handlePageChange}
           currentPage={currentPage}

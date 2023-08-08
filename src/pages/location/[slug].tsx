@@ -8,8 +8,6 @@ import { CharacterType, LocationResponse } from "@/shared/types";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-// ... (imports)
-
 function LocationPage() {
   const [currentLocation, setCurrentLocation] =
     useState<LocationResponse | null>(null);
@@ -49,16 +47,21 @@ function LocationPage() {
 
   return (
     <RootLayout>
-        <HomeButton />
+      <HomeButton />
       {currentLocation && (
         <div className="text-white bg-secondary">
           <Title title={currentLocation.name ?? "Location Name"} />
           <div className="text-center text-2xl p-8">
-            <p>{currentLocation.dimension ?? "Dimension"} {currentLocation.type ?? "Location Type"}</p>
+            <p>
+              {currentLocation.dimension ?? "Dimension"}{" "}
+              {currentLocation.type ?? "Location Type"}
+            </p>
           </div>
           <div>
-            <p className="text-center underline underline-offset-4 font-bold">{currentLocation.residents.length} Characters</p>
-            <CardContainer cards={currentCharacters}/>
+            <p className="text-center underline underline-offset-4 font-bold">
+              {currentLocation.residents.length} Characters
+            </p>
+            <CardContainer cards={currentCharacters} />
           </div>
         </div>
       )}
