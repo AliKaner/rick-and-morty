@@ -9,9 +9,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 function CharacterPage() {
-  const [currentCharacter, setCurrentCharacter] = useState<
-    CharacterType
-  >();
+  const [currentCharacter, setCurrentCharacter] = useState<CharacterType>();
   const router = useRouter();
   const { slug } = router.query;
 
@@ -39,17 +37,17 @@ function CharacterPage() {
 
   const onLocationClickHandle = () => {
     if (currentCharacter && currentCharacter.location?.name !== "unknown") {
-      router.push(`/location/${extractIdFromUrl(currentCharacter.location.url)}`);
+      router.push(
+        `/location/${extractIdFromUrl(currentCharacter.location.url)}`
+      );
     }
-  }
-  
+  };
+
   const onEpisodeClickHandle = () => {
     if (currentCharacter && currentCharacter.origin?.name !== "unknown") {
       router.push(`/episode/${extractIdFromUrl(currentCharacter.origin.url)}`);
     }
-  }
-  
-  
+  };
 
   return (
     <RootLayout>
